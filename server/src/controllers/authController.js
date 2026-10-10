@@ -3,9 +3,14 @@ const User = require('../models/User');
 
 // Helper to generate JWT token
 const generateToken = (userId) => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret && process.env.NODE_ENV === 'production') {
+    throw new Error('FATAL: JWT_SECRET environment variable is missing in production');
+  }
+
   return jwt.sign(
     { id: userId },
-    process.env.JWT_SECRET || 'fallback_secret_for_dev_only',
+    secret || 'fallback_secret_for_dev_only',
     {
       expiresIn: process.env.JWT_EXPIRES_IN || '7d',
     }

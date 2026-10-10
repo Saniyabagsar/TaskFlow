@@ -17,7 +17,12 @@ const protect = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret_for_dev_only');
+    const secret = process.env.JWT_SECRET;
+    if (!secret && process.env.NODE_ENV === 'production') {
+      throw new Error('FATAL: JWT_SECRET environment variable is missing in production');
+    }
+
+    const decoded = jwt.verify(token, secret || 'fallback_secret_for_dev_only');
 
     const user = await User.findById(decoded.id).select('-password');
     if (!user) {
