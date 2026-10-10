@@ -33,7 +33,7 @@ Add screenshots of your actual application to the `screenshots/` directory in th
 
 ### Task Management
 
-![Task Management](newtasks.png)
+![Task Management](newtask.png)
 
 ## 🌟 Key Features
 
