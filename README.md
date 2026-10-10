@@ -22,15 +22,18 @@ Add screenshots of your actual application to the `screenshots/` directory in th
 
 ### Registration Page
 
-![Registration Page](screenshots/register.png)
+![Registration Page](register.png)
+
+### Login Page
+![Login Page](login.png)
 
 ### Kanban Dashboard
 
-![Kanban Dashboard](screenshots/dashboard.png)
+![Kanban Dashboard](dashboard.png)
 
 ### Task Management
 
-![Task Management](screenshots/tasks.png)
+![Task Management](newtasks.png)
 
 ## 🌟 Key Features
 
