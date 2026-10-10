@@ -16,6 +16,22 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 - **Backend Health Check:** [TaskFlow API](https://taskflow-backend-ddlu.onrender.com/api/health)
 - **Source Code:** [GitHub Repository](https://github.com/Saniyabagsar/TaskFlow)
 
+## 🖼️ Application Screenshots
+
+Add screenshots of your actual application to the `screenshots/` directory in the repository.
+
+### Registration Page
+
+![Registration Page](screenshots/register.png)
+
+### Kanban Dashboard
+
+![Kanban Dashboard](screenshots/dashboard.png)
+
+### Task Management
+
+![Task Management](screenshots/tasks.png)
+
 ## 🌟 Key Features
 
 ### 🔐 Authentication & Security
