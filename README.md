@@ -1,15 +1,15 @@
 # TaskFlow — Mini Kanban-Style Task Management System
 
-[![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue.svg)](https://reactjs.org/)
+[![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue.svg)](https://react.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
-[![Platform](https://img.shields.io/badge/Deployment-Render%20%2B%20MongoDB%20Atlas-purple.svg)]()
+[![Platform](https://img.shields.io/badge/Deployment-Render%20%2B%20MongoDB%20Atlas-purple.svg)](https://render.com/)
 
 > A full-stack Mini Kanban Task Management Web Application built for the **Aarvion Services India Pvt. Ltd. Full Stack Developer Assessment**.
 
-TaskFlow enables users to register, securely log in, and manage their productivity workflows across three distinct Kanban columns (**To-Do**, **In-Progress**, and **Done**) with real-time metric analytics, drag-and-drop support, and multi-user data isolation.
+TaskFlow enables users to register, securely log in, and manage their productivity workflows across three distinct Kanban columns (**To-Do**, **In-Progress**, and **Done**) with summary metrics, drag-and-drop support, and user-specific task management.
 
 ---
+
 ## 🌐 Live Demo
 
 - **Frontend Application:** [TaskFlow](https://taskflow-frontend-29oi.onrender.com)
@@ -23,6 +23,7 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 ![Registration Page](register.png)
 
 ### Login Page
+
 ![Login Page](login.png)
 
 ### Kanban Dashboard
@@ -36,24 +37,26 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 ## 🌟 Key Features
 
 ### 🔐 Authentication & Security
-- **JWT-Based Authentication**: Secure stateless authentication using JSON Web Tokens with expiration policies.
-- **Password Encryption**: Passwords salted and hashed with `bcryptjs` (12 rounds) before database persistence. Plaintext passwords are never stored or returned in API responses.
-- **Route Protection**: Client-side navigation guards and server-side JWT verification middleware.
-- **Multi-Tenant User Isolation**: Strict ownership checks ensure users can only view, create, edit, or delete their own tasks.
-- **Centralized Security**: HTTP security headers powered by `helmet`, strict CORS origin matching, and request payload rate/size limits.
+
+- **JWT-Based Authentication**: Uses JSON Web Tokens for user authentication.
+- **Password Security**: Uses `bcryptjs` for password hashing.
+- **Protected Routes**: Restricts access to protected pages and API endpoints.
+- **User-Specific Tasks**: Users can manage their own tasks.
+- **Security Middleware**: Uses security-related middleware and request validation in the backend.
 
 ### 📋 Kanban Dashboard & Task Management
+
 - **3 Distinct Kanban Columns**: Dedicated visual styling and badges for **To-Do** (Indigo), **In-Progress** (Amber), and **Done** (Emerald).
-- **Interactive Drag-and-Drop**: Built using `@dnd-kit/core` with instant optimistic UI updates and server synchronization.
+- **Interactive Drag-and-Drop**: Built using `@dnd-kit/core` to move tasks between Kanban columns.
 - **Full CRUD Operations**:
-  - Create tasks with title, description, and initial column status.
-  - Edit task titles, descriptions, and statuses inline or via modal.
-  - Delete tasks with accessible confirmation dialogs.
-  - Quick status dropdown / shift controls as an accessible alternative to drag-and-drop.
-- **Real-Time Summary Metrics**: Dynamic summary cards displaying total task counts and column breakdowns.
-- **Live Search & Filter**: Real-time client-side search across titles/descriptions and column status filtering.
-- **Toast Feedback**: Instant user feedback for all actions using `react-hot-toast`.
-- **Responsive SaaS UI**: Mobile, tablet, and desktop optimized layouts with accessible ARIA landmarks.
+  - Create tasks with a title, description, and initial column status.
+  - Edit task titles, descriptions, and statuses inline or via a modal.
+  - Delete tasks with confirmation dialogs.
+  - Quick status dropdown / shift controls as an alternative to drag-and-drop.
+- **Summary Metrics**: Dashboard cards displaying total task counts and column breakdowns.
+- **Live Search & Filter**: Search across titles and descriptions and filter tasks by column status.
+- **Toast Feedback**: User feedback for actions using `react-hot-toast`.
+- **Responsive SaaS UI**: Layout designed for mobile, tablet, and desktop screens.
 
 ---
 
@@ -61,19 +64,19 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| **Frontend** | React 18 (Vite) | High-performance Single Page Application (SPA) UI |
+| **Frontend** | React 18 (Vite) | Single Page Application (SPA) user interface |
 | **Routing** | React Router v6 | Client-side routing and protected route wrappers |
-| **State Management** | React Context API | Global authentication and user session state |
-| **HTTP Client** | Axios | Centralized API client with interceptors for JWT Bearer tokens |
-| **Drag and Drop** | @dnd-kit/core | Accessible drag-and-drop Kanban column transitions |
-| **Icons & UI** | Lucide React | Modern, consistent iconography |
-| **Notifications** | react-hot-toast | Non-intrusive toast notifications |
-| **Backend** | Node.js & Express.js | Modular RESTful API server |
-| **Database** | MongoDB Atlas & Mongoose | Cloud NoSQL database with strict schema validation and indexes |
-| **Validation** | express-validator | Request payload sanitization and validation |
-| **Security** | bcryptjs, jsonwebtoken, helmet, cors | Password hashing, token signing, and HTTP header protection |
-| **Testing** | Jest, Supertest, mongodb-memory-server | Automated unit and integration testing suite |
-| **Hosting** | Render & MongoDB Atlas | Cloud production deployment |
+| **State Management** | React Context API | Authentication and user session state |
+| **HTTP Client** | Axios | API communication |
+| **Drag and Drop** | @dnd-kit/core | Drag-and-drop Kanban column transitions |
+| **Icons & UI** | Lucide React | Icons and interface elements |
+| **Notifications** | react-hot-toast | Toast notifications |
+| **Backend** | Node.js & Express.js | REST API server |
+| **Database** | MongoDB Atlas & Mongoose | NoSQL database and data modeling |
+| **Validation** | express-validator | Request validation |
+| **Security** | bcryptjs, jsonwebtoken, helmet, cors | Authentication and security-related middleware |
+| **Testing** | Jest, Supertest, mongodb-memory-server | Testing tools |
+| **Hosting** | Render & MongoDB Atlas | Application hosting and cloud database |
 
 ---
 
@@ -124,12 +127,12 @@ TaskFlow/
 │   │   │   ├── authController.js
 │   │   │   └── taskController.js
 │   │   ├── middleware/         # Custom Express middlewares
-│   │   │   ├── authMiddleware.js      # JWT authentication guard
-│   │   │   ├── errorMiddleware.js     # Centralized error handler
-│   │   │   └── notFoundMiddleware.js  # 404 Route handler
+│   │   │   ├── authMiddleware.js
+│   │   │   ├── errorMiddleware.js
+│   │   │   └── notFoundMiddleware.js
 │   │   ├── models/             # Mongoose schemas
-│   │   │   ├── User.js         # User model with bcrypt pre-save hook
-│   │   │   └── Task.js         # Task model with status enum & indexes
+│   │   │   ├── User.js
+│   │   │   └── Task.js         # Task model
 │   │   ├── routes/             # RESTful API route definitions
 │   │   │   ├── authRoutes.js
 │   │   │   ├── taskRoutes.js
@@ -138,15 +141,15 @@ TaskFlow/
 │   │   │   ├── authValidators.js
 │   │   │   └── taskValidators.js
 │   │   ├── app.js              # Express app setup, CORS, and middleware
-│   │   └── server.js           # Server entry point & graceful shutdown
-│   ├── tests/                  # Automated integration tests
-│   │   └── api.test.js         # Comprehensive Jest/Supertest suite
+│   │   └── server.js           # Server entry point
+│   ├── tests/                  # Automated tests
+│   │   └── api.test.js         # Jest/Supertest test suite
 │   ├── .env.example            # Backend environment variable templates
 │   └── package.json            # Backend dependencies & test scripts
 │
 ├── .gitignore                  # Monorepo root gitignore
 ├── package.json                # Root orchestration package scripts
-└── README.md                   # Comprehensive project documentation
+└── README.md                   # Project documentation
 ```
 
 ---
@@ -154,6 +157,7 @@ TaskFlow/
 ## 🚀 Getting Started Locally
 
 ### Prerequisites
+
 - **Node.js**: v18.0.0 or higher (v20+ recommended)
 - **npm**: v9.0.0 or higher
 - **MongoDB**: A free MongoDB Atlas cluster or a local MongoDB instance (`mongodb://localhost:27017/taskflow`)
@@ -161,6 +165,7 @@ TaskFlow/
 ---
 
 ### Step 1: Clone the Repository
+
 ```bash
 git clone https://github.com/Saniyabagsar/TaskFlow.git
 cd TaskFlow
@@ -171,26 +176,36 @@ cd TaskFlow
 ### Step 2: Configure Environment Variables
 
 #### 1. Backend Environment Setup (`server/.env`)
+
 Create a `.env` file in the `server` directory:
+
 ```bash
 cp server/.env.example server/.env
 ```
+
 Fill in the required configuration:
+
 ```env
 PORT=5000
 NODE_ENV=development
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.example.mongodb.net/taskflow?retryWrites=true&w=majority
-JWT_SECRET=super_secret_jwt_key_must_be_at_least_32_characters_long_for_security
+JWT_SECRET=replace_with_a_secure_secret_of_at_least_32_characters
 JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 ```
 
+Replace the MongoDB URI and JWT secret with your own configuration values.
+
 #### 2. Frontend Environment Setup (`client/.env`)
+
 Create a `.env` file in the `client` directory:
+
 ```bash
 cp client/.env.example client/.env
 ```
+
 Add the backend API base URL:
+
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
@@ -200,10 +215,13 @@ VITE_API_URL=http://localhost:5000/api
 ### Step 3: Install Dependencies
 
 You can install all dependencies from the root directory:
+
 ```bash
 npm run install:all
 ```
-Or individually:
+
+Or install them individually:
+
 ```bash
 npm --prefix server install
 npm --prefix client install
@@ -213,17 +231,22 @@ npm --prefix client install
 
 ### Step 4: Run the Application
 
-#### Option A: Start both services concurrently (from root)
-Run server in terminal 1:
+#### Option A: Start both services separately
+
+Run the server in terminal 1:
+
 ```bash
 npm run dev:server
 ```
-Run client in terminal 2:
+
+Run the client in terminal 2:
+
 ```bash
 npm run dev:client
 ```
 
-#### Local Access URLs:
+#### Local Access URLs
+
 - **Frontend App**: [http://localhost:5173](http://localhost:5173)
 - **Backend API**: [http://localhost:5000](http://localhost:5000)
 - **Health Check Endpoint**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
@@ -232,13 +255,16 @@ npm run dev:client
 
 ## 🧪 Automated Testing
 
-The project includes an automated integration test suite covering user registration, login, JWT validation, task CRUD operations, status transitions, validation errors, and cross-user data isolation.
+The project includes a test suite for checking application functionality.
 
-To run the automated tests:
+To run the tests:
+
 ```bash
 npm run test:server
 ```
-or inside the `server/` directory:
+
+Or from inside the `server/` directory:
+
 ```bash
 cd server
 npm test
@@ -251,11 +277,13 @@ npm test
 ### Base URL: `/api`
 
 ### 1. Health Check
+
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
 | `GET` | `/api/health` | Public | Returns server status, uptime, and database connection state |
 
-#### Response (`200 OK`):
+#### Example Response (`200 OK`)
+
 ```json
 {
   "status": "healthy",
@@ -270,14 +298,17 @@ npm test
 ---
 
 ### 2. Authentication Endpoints
+
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
-| `POST` | `/api/auth/register` | Public | Register a new user and generate JWT token |
-| `POST` | `/api/auth/login` | Public | Authenticate user credentials and return JWT token |
-| `GET` | `/api/auth/me` | Protected | Fetch current logged-in user profile |
+| `POST` | `/api/auth/register` | Public | Register a new user and generate a JWT token |
+| `POST` | `/api/auth/login` | Public | Authenticate user credentials and return a JWT token |
+| `GET` | `/api/auth/me` | Protected | Fetch the current logged-in user profile |
 
 #### `POST /api/auth/register`
+
 **Request Body:**
+
 ```json
 {
   "name": "Jane Doe",
@@ -285,7 +316,9 @@ npm test
   "password": "password123"
 }
 ```
-**Response (`201 Created`):**
+
+**Example Response (`201 Created`):**
+
 ```json
 {
   "success": true,
@@ -303,14 +336,18 @@ npm test
 ```
 
 #### `POST /api/auth/login`
+
 **Request Body:**
+
 ```json
 {
   "email": "jane@example.com",
   "password": "password123"
 }
 ```
-**Response (`200 OK`):**
+
+**Example Response (`200 OK`):**
+
 ```json
 {
   "success": true,
@@ -328,19 +365,23 @@ npm test
 
 ---
 
-### 3. Task Management Endpoints (All Protected with `Bearer <token>`)
+### 3. Task Management Endpoints (Protected with `Bearer <token>`)
+
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/tasks` | Get all tasks owned by authenticated user (supports `?status=` and `?search=`) |
-| `GET` | `/api/tasks/:id` | Get single task by ID |
-| `POST` | `/api/tasks` | Create new task |
+| `GET` | `/api/tasks` | Get tasks belonging to the authenticated user (supports `?status=` and `?search=`) |
+| `GET` | `/api/tasks/:id` | Get a single task by ID |
+| `POST` | `/api/tasks` | Create a new task |
 | `PUT` | `/api/tasks/:id` | Update task title, description, and status |
 | `PATCH` | `/api/tasks/:id/status` | Update task status only (`To-Do`, `In-Progress`, `Done`) |
-| `DELETE` | `/api/tasks/:id` | Delete task owned by authenticated user |
+| `DELETE` | `/api/tasks/:id` | Delete a task |
 
 #### `POST /api/tasks`
-**Headers:** `Authorization: Bearer <token>`  
+
+**Headers:** `Authorization: Bearer <token>`
+
 **Request Body:**
+
 ```json
 {
   "title": "Design Database Schema",
@@ -348,7 +389,9 @@ npm test
   "status": "To-Do"
 }
 ```
-**Response (`201 Created`):**
+
+**Example Response (`201 Created`):**
+
 ```json
 {
   "success": true,
@@ -366,14 +409,19 @@ npm test
 ```
 
 #### `PATCH /api/tasks/:id/status`
-**Headers:** `Authorization: Bearer <token>`  
+
+**Headers:** `Authorization: Bearer <token>`
+
 **Request Body:**
+
 ```json
 {
   "status": "In-Progress"
 }
 ```
-**Response (`200 OK`):**
+
+**Example Response (`200 OK`):**
+
 ```json
 {
   "success": true,
@@ -389,65 +437,24 @@ npm test
 
 ---
 
-## 🌐 Cloud Deployment Guide (Render + MongoDB Atlas)
-
-### Step 1: Setup MongoDB Atlas Database
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a free M0 cluster.
-2. In **Database Access**, create a database user with read/write privileges.
-3. In **Network Access**, add IP `0.0.0.0/0` (allow access from anywhere) so Render services can connect.
-4. In **Clusters > Connect > Drivers**, copy the connection string:
-   `mongodb+srv://<username>:<password>@cluster0.mongodb.net/taskflow?retryWrites=true&w=majority`
-
----
-
-### Step 2: Deploy Backend Web Service on Render
-1. Log in to [Render Dashboard](https://dashboard.render.com/).
-2. Click **New +** > **Web Service**.
-3. Connect your GitHub repository.
-4. Configure service settings:
-   - **Name**: `taskflow-api`
-   - **Root Directory**: `server`
-   - **Environment**: `Node`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-5. Under **Environment Variables**, add:
-   - `NODE_ENV`: `production`
-   - `PORT`: `5000` (or leave default assigned by Render)
-   - `MONGODB_URI`: `<Your MongoDB Atlas Connection String>`
-   - `JWT_SECRET`: `<Generate a random 32+ character string>`
-   - `JWT_EXPIRES_IN`: `7d`
-   - `CLIENT_URL`: `<Your deployed Frontend Render URL>` (or `*` temporarily)
-6. Click **Create Web Service**.
-7. Once deployed, test the health check: `https://taskflow-api.onrender.com/api/health`.
-
----
-
-### Step 3: Deploy Frontend Static Site on Render
-1. Click **New +** > **Static Site**.
-2. Select your GitHub repository.
-3. Configure settings:
-   - **Name**: `taskflow-client`
-   - **Root Directory**: `client`
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `dist`
-4. Under **Environment Variables**, add:
-   - `VITE_API_URL`: `https://taskflow-api.onrender.com/api` (use your actual Render backend URL)
-5. In **Redirects / Rewrites**, verify `/* -> /index.html (200)` rewrite is active (handled by `client/public/_redirects`).
-6. Click **Create Static Site**.
-7. Once deployed, update `CLIENT_URL` in your backend Render Web Service settings to match your frontend URL (`https://taskflow-client.onrender.com`).
-
----
-
 ## 🔒 Security & Architecture Decisions
-- **Strict Data Scoping**: All database queries for tasks require `{ _id: taskId, userId: req.user._id }`, preventing horizontal privilege escalation or IDOR vulnerabilities.
-- **Input Validation**: Request payloads are strictly validated using `express-validator` and Mongoose schema validation.
-- **Error Obfuscation**: In production mode (`NODE_ENV=production`), database error internals and stack traces are suppressed from API responses to prevent information leakage.
-- **Graceful Shutdown**: Node server listens for `SIGTERM` and `SIGINT` signals to cleanly close database and HTTP connections.
+
+- **Authentication**: User authentication is handled using JSON Web Tokens (JWT).
+- **Password Security**: Passwords are hashed using `bcryptjs`.
+- **Route Protection**: Authentication middleware is used for protected API routes.
+- **Input Validation**: Request validation is handled using `express-validator` and Mongoose schema validation.
+- **User-Specific Task Management**: The application is designed so users manage their own tasks.
+- **Error Handling**: Backend middleware handles application errors.
+- **Application Lifecycle**: The backend includes a server entry point for running the API.
 
 ---
 
 ## 👨‍💻 Submission Information
-- **Candidate Name**: Full Stack MERN Developer Candidate
-- **Company Assessment**: Aarvion Services India Pvt. Ltd.
-- **Project**: TaskFlow — Mini Task Management System
-- **Repository**: Single Monorepo with `/client` and `/server`
+
+- **Candidate Name:** Saniya Bagsar
+- **Company Assessment:** Aarvion Services India Pvt. Ltd.
+- **Project:** TaskFlow — Mini Kanban-Style Task Management System
+- **Repository:** [GitHub Repository](https://github.com/Saniyabagsar/TaskFlow)
+- **Live Application:** [TaskFlow](https://taskflow-frontend-29oi.onrender.com)
+- **Backend Health Check:** [TaskFlow API](https://taskflow-backend-ddlu.onrender.com/api/health)
+- **Project Structure:** Single monorepo with `/client` and `/server`
