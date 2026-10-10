@@ -18,8 +18,6 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 
 ## 🖼️ Application Screenshots
 
-Add screenshots of your actual application to the `screenshots/` directory in the repository.
-
 ### Registration Page
 
 ![Registration Page](register.png)
@@ -164,7 +162,7 @@ TaskFlow/
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/TaskFlow.git
+git clone https://github.com/Saniyabagsar/TaskFlow.git
 cd TaskFlow
 ```
 
