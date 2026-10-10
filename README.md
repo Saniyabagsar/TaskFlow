@@ -54,7 +54,7 @@ TaskFlow enables users to register, securely log in, and manage their productivi
   - Delete tasks with confirmation dialogs.
   - Quick status dropdown / shift controls as an alternative to drag-and-drop.
 - **Summary Metrics**: Dashboard cards displaying total task counts and column breakdowns.
-- **Live Search & Filter**: Search across titles and descriptions and filter tasks by column status.
+- **Search & Filter**: The dashboard searches task titles and descriptions and filters tasks by column status. The API's optional `search` query parameter searches titles.
 - **Toast Feedback**: User feedback for actions using `react-hot-toast`.
 - **Responsive SaaS UI**: Layout designed for mobile, tablet, and desktop screens.
 
@@ -75,7 +75,7 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 | **Database** | MongoDB Atlas & Mongoose | NoSQL database and data modeling |
 | **Validation** | express-validator | Request validation |
 | **Security** | bcryptjs, jsonwebtoken, helmet, cors | Authentication and security-related middleware |
-| **Testing** | Jest, Supertest, mongodb-memory-server | Testing tools |
+| **Testing** | Jest, Supertest | Automated backend API tests |
 | **Hosting** | Render & MongoDB Atlas | Application hosting and cloud database |
 
 ---
@@ -86,7 +86,7 @@ TaskFlow enables users to register, securely log in, and manage their productivi
 TaskFlow/
 ├── client/                     # Frontend React (Vite) Application
 │   ├── public/                 # Static assets & _redirects for SPA routing
-│   │   ├── _redirects          # Netlify / Render static rewrites
+│   │   ├── _redirects          # SPA fallback rewrite rule
 │   │   └── favicon.svg         # TaskFlow brand icon
 │   ├── src/
 │   │   ├── api/                # Centralized Axios client & API services
@@ -143,7 +143,7 @@ TaskFlow/
 │   │   ├── app.js              # Express app setup, CORS, and middleware
 │   │   └── server.js           # Server entry point
 │   ├── tests/                  # Automated tests
-│   │   └── api.test.js         # Jest/Supertest test suite
+│   │   └── unit.test.js        # Jest/Supertest API test suite
 │   ├── .env.example            # Backend environment variable templates
 │   └── package.json            # Backend dependencies & test scripts
 │
@@ -177,7 +177,13 @@ cd TaskFlow
 
 #### 1. Backend Environment Setup (`server/.env`)
 
-Create a `.env` file in the `server` directory:
+Create `server/.env` by copying `server/.env.example`. On Windows PowerShell, run:
+
+```powershell
+Copy-Item server/.env.example server/.env
+```
+
+On macOS/Linux, run:
 
 ```bash
 cp server/.env.example server/.env
@@ -194,11 +200,17 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 ```
 
-Replace the MongoDB URI and JWT secret with your own configuration values.
+Replace the example MongoDB URI with your actual Atlas connection string or local MongoDB URI. The `cluster0.example.mongodb.net` address is a placeholder and will not connect as written. Set `JWT_SECRET` to a long, random secret (at least 32 characters); do not commit real secrets to GitHub.
 
 #### 2. Frontend Environment Setup (`client/.env`)
 
-Create a `.env` file in the `client` directory:
+Create `client/.env` by copying `client/.env.example`. On Windows PowerShell, run:
+
+```powershell
+Copy-Item client/.env.example client/.env
+```
+
+On macOS/Linux, run:
 
 ```bash
 cp client/.env.example client/.env
@@ -257,7 +269,9 @@ npm run dev:client
 
 The project includes a test suite for checking application functionality.
 
-To run the tests:
+The backend test suite uses Jest and Supertest. The current tests mock the User and Task models, so they test API behavior without requiring a live MongoDB database.
+
+Run the tests from the repository root:
 
 ```bash
 npm run test:server
@@ -283,6 +297,8 @@ npm test
 | `GET` | `/api/health` | Public | Returns server status, uptime, and database connection state |
 
 #### Example Response (`200 OK`)
+
+The values below are illustrative; the environment, database status, uptime, and timestamp will vary.
 
 ```json
 {
